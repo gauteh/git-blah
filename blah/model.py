@@ -14,7 +14,7 @@ class Simulation:
     def __init__(self):
         # Initialize solution: the grid of u(k, i, j)
         self.u = np.empty(
-            (self.max_iter_time, self.plate_length, self.plate_length))
+            (self.plate_length, self.plate_length))
 
         # Initial condition everywhere inside the grid
         self.u_initial = 0
@@ -29,13 +29,14 @@ class Simulation:
         self.u.fill(self.u_initial)
 
         # Set the boundary conditions
-        self.u[:, (self.plate_length - 1):, :] = self.u_top
-        self.u[:, :, :1] = self.u_left
-        self.u[:, :1, 1:] = self.u_bottom
-        self.u[:, :, (self.plate_length - 1):] = self.u_right
+        self.u[(self.plate_length - 1):, :] = self.u_top
+        self.u[:, :1] = self.u_left
+        self.u[:1, 1:] = self.u_bottom
+        self.u[:, (self.plate_length - 1):] = self.u_right
 
     def calculate(self):
-        u = self.u.copy()
+        u = np.empty((self.max_iter_time, self.plate_length, self.plate_length))
+        u[:,...] = self.u
 
         for k in range(0, self.max_iter_time - 1, 1):
             for i in range(1, self.plate_length - 1, self.delta_x):
