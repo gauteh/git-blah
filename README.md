@@ -30,3 +30,12 @@ A small python library with tests.
 ## Run tests
 
 `pytest`
+
+# Explore log
+
+Try to figure out which commit id introduced the file `environment.yml`?
+
+
+# References
+
+* https://levelup.gitconnected.com/solving-2d-heat-equation-numerically-using-python-3334004aa01a
