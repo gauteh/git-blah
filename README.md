@@ -29,7 +29,7 @@ A small python library with tests.
 
 ## Run tests
 
-`pytest`
+`pytest --show-plot`
 
 # Explore log
 
